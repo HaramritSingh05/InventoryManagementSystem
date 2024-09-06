@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Godown</title>
+  <link rel="stylesheet" href="../css/AddGodownHead.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+  <div>
+    <nav>
+      <div class="main-nav container flex">
+        <a href="#" onclick="reload()" class="company-logo">
+          <img src="../resources/LogoPyramid.png" alt="company logo">
+        </a>
+
+
+        <div class="nav-links flex ulm" id="nav-links">
+          <ul class="flex " id="nav-item">
+            <li class="hover-link nav-item" id="Home" onclick="onNavItemClick('Home','../Pages/Home.html')">Home</li>
+            <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products','products.html')">Products</li>
+            <!-- <li class="hover-link nav-item" id="customer" onclick="onNavItemClick('customer')">Customer</li> -->
+            <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+              Supplier</li>
+            <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','Purchase.html')">
+              Purchase</li>
+            <li class="hover-link nav-item" id="customer" onclick="onNavItemClick('delivery','DeliveryOrder.html')">
+              Delivery</li>
+            <!-- <li class="hover-link nav-item" id="AddGodownHead"
+                onclick="onNavItemClick('AddGodownHead','../Pages/AddGodownHead.html')">
+                Add GodownHead</li> -->
+            <li class="hover-link nav-item" id="profile" onclick="onNavItemClick('purchase','../Pages/Profile.html')">
+              Profile</li>
+            <li style="margin-top: 14px;"> <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+            </li>
+
+          </ul>
+
+
+        </div>
+        <a class="nav-toggle hover-link" href="#" id="nav-toggle">
+          <i class="fa-solid fa-bars"></i>
+        </a>
+      </div>
+    </nav>
+<main>
+    <div class="cards-container container flex">
+
+
+
+
+      <div class="formcard ">
+        <h3>Add GodownHead</h3>
+        <hr>
+
+
+        <form id="addGodownHead" style="display: flex; flex-direction: column;  align-items: center;" action="#">
+          <!-- Add hidden form field to handle the update -->
+          <input type="hidden">
+          <input type="text" class="form-control mb-4" id="godownId" placeholder="Godown Id" pattern="[0-9]+"
+            title="Please enter numeric characters only">
+          <!-- Supplier name dropdown -->
+          <!-- <select class="form-control mb-4" name="supplierName">
+                        <option value="">Select Supplier</option>
+                    </select> -->
+          <input type="text" class="form-control mb-4" id="godownHeadName" placeholder="GodownHead Name"
+            pattern="[A-Za-z\s]+" title="Please enter alphabetic characters only">
+          <input type="text" class="form-control mb-4" id="username" placeholder="Username" pattern="[A-Za-z0-9_]+"
+            title="Please enter alphanumeric characters and underscores only">
+          <input type="email" class="form-control mb-4" id="email" placeholder="Email">
+          <input
+              type="text"
+              class="form-control mb-4"
+              id="address"
+              placeholder="Address"
+            />
+          <input type="password" class="form-control mb-4" id="password" placeholder="Password" pattern=".{6,}"
+            title="Password must be at least 6 characters">
+          <input type="tel" class="form-control mb-4" id="godownHeadNo" placeholder="Contact No." pattern="[0-9]{10}"
+            title="Please enter a valid 10-digit phone number">
+          <button class="btn btn-primary text-center" id="submitFormData" type="submit">Add</button>
+        </form>
+
+        <hr>
+        <a href="../Pages/Godown.html">Back to Godown</a>
+
+      </div>
+
+      </div>
+
+      <!-- Toast -->
+
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body">
+              Something went wrong. Please try again.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- </div> -->
+      <!-- Config -->
+      <script src="../config/config.js"></script>
+      <script src="../Scripts/utils.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+      <script
+        type="text/javascript"
+        src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"
+      ></script>
+      <script src="../Scripts/AddGodownHead.js"></script>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="../Scripts/logout.js"></script>
+      <script
+        src="https://kit.fontawesome.com/5cbfac4b1e.js"
+        crossorigin="anonymous"
+      ></script>
+      <script src="../Scripts/navbar.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          setActivePage();
+        });
+      </script>
+
+
+
+
+    </div>
+  </main>
+    
+</body>
+
+
+</html>
+

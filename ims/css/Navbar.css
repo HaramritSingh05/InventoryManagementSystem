@@ -1,0 +1,219 @@
+:root {
+    --primary-text-color: #264653;
+    --secondary-text-color: #1d3557;
+    --accent-color: #BDE0FE;
+    --accent-color-dark: #A2D2FF;
+
+}
+
+ul {
+    list-style: none;
+    color: #000000;
+    font-family: 'Poppins',sans-serif;
+
+}
+
+
+
+p {
+    color: var(--secondary-text-color);
+    line-height: 1.4rem;
+}
+
+
+.flex {
+    display: flex;
+    align-items: center;
+
+}
+
+.company-logo img {
+    width: 8.33rem;
+    height:3.75rem;
+    margin-bottom: 2rem;
+}
+
+nav {
+    background-color: #FFFFFF;
+    position: relative;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    right: 0;
+    background-image: url("../resources/home-header-bg-zom-f063611a9d.svg");
+    height: 81.2px;
+    display: flex;
+
+}
+
+.nav-item.active{
+    color: #264653 !important;
+    scale: 1.2;
+    font-weight: 700;
+}
+.main-nav {
+    justify-content: space-between;
+    padding-block: 8px;
+    margin-top: 20px;
+    position: relative;
+
+}
+
+
+
+
+.nav-links ul {
+    gap: 40px;
+    vertical-align: middle;
+
+}
+
+
+.hover-link {
+    cursor: pointer;
+}
+
+.hover-link:hover {
+    color: var(--secondary-text-color);
+
+}
+
+.hover-link:active {
+    color: #FFAFCC;
+}
+
+.nav-item.active {
+    color: var(--accent-color);
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.ulm {
+    justify-content: center;
+}
+
+
+.btn-primary {
+
+    display: inline-block !important;
+    border-style: none !important;
+    width: `0% !important;
+    transition-duration: .3s !important;
+    transition-property: transform !important;
+    text-align: center !important;
+    transition: all .3s !important;
+    border-radius: 100px 100px 100px 100px !important;
+    line-height: 1em !important;
+    letter-spacing: 0em !important;
+    background-color: #262626 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    color: #FFFFFF !important;
+    margin-top:5px !important ;
+    padding: 20px 40px 20px 40px !important;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    background-color: #52AEBD !important;
+}
+
+
+
+.btn-primary1{
+    display: inline-block !important;
+
+    font-size: 1rem !important;
+    text-transform: None !important;
+    color: #FFF !important;
+    border-style: none !important;
+    line-height: 1em !important;
+    letter-spacing: 0em !important;
+    background-color:#52AEBD !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 500 !important;
+    transition: all .2s cubic-bezier(.68,.01,.58,.75) !important;
+    border-radius: 100px 100px 100px 100px !important;
+    padding: clamp(14px,0.8em,18px) clamp(18px,1.8em,36px) !important;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    
+    margin-bottom: 1rem!important;
+
+}
+
+.btn-primary1:hover{
+    transform: scale(1.1) !important; 
+    color: #FFF !important; 
+    background-color: #0098DB !important;
+}
+
+.btn-info1{
+    font-family: inherit !important;
+    cursor: pointer !important;
+    font-weight: 500 !important;
+    line-height: 250% !important;
+    height: 41px !important;
+    border-radius: 3px !important;
+    border: none !important;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.15) !important;
+    text-decoration: none !important;
+    color: #fff !important;
+    display: inline-block !important;
+    text-align: middle !important;
+    padding:0 15px !important;
+    font-size: 16px !important;
+    background-color: #066aab !important;
+    transition: all 0.15s ease-in-out !important;
+    position: relative;
+}
+
+.btn-info1:hover{
+    background: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2)),#066aab;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width:991px) {
+   
+
+    .nav-toggle {
+        display: block !important;
+        margin-right: 20px !important;
+    }
+
+
+    .nav-links {
+        position: absolute !important;
+        background-color: white !important;
+        right: -100% !important;
+        top: 100% !important;
+        width: 100% !important;
+        padding-block: 20px !important;
+        transition: 0.2s ease-in-out !important;
+
+    }
+
+    .nav-links.active {
+        right: 0 !important;
+    }
+
+    .nav-links ul {
+        flex-direction: column !important;
+
+    }
+
+}
+
+@media screen and (max-width:768px) {
+
+    .btn-primary1{
+        width: 100% !important; 
+     }
+
+
+   
+}

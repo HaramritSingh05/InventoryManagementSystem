@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="../css/Navbar.css">
+    
+</head>
+<body id="home" class="heading-2" style="display: none;">
+  <div>
+      <div>
+              <nav>
+                <div class="main-nav container flex">
+                    <a  onclick="reload()" class="company-logo">
+                        <img src="../resources/LogoPyramid.png" alt="company logo">
+                    </a>
+
+
+                    <div class="nav-links flex ulm" id="nav-links">
+                        <ul class="flex" id="nav-item">
+                            <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home', 'Home.html') ">Home</li>
+                            <!-- <li class="hover-link nav-item" id="admin" onclick="onNavItemClick('admin','admin.html')">Admin</li> -->
+                            <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products', 'Products.html')">Products</li>
+                            <!-- <li class="hover-link nav-item" id="customer" onclick="onNavItemClick('customer','Customer.html')">Customer</li> -->
+                            <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+                                Supplier</li>
+                            <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','purchase.html')">
+                                Purchase</li>
+                            <li class="hover-link nav-item" id="delivery" onclick="onNavItemClick('delivery','DeliveryOrder.html')">Delivery</li>
+                            <li class="hover-link nav-item" id="profile" onclick="onNavItemClick('profile','Profile.html')">
+                                Profile</li>
+                            <li style="margin-top: 14px;"> <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                    <a class="nav-toggle hover-link" id="nav-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                </div>
+            </nav>
+          <div>
+            <div class="container-fluid d-flex" >
+              <!-- section 1 -->
+                
+                <div class="container mt-3"  >
+                  <!-- <div class="row" id="godownSelectRow" style="display: none;">
+                    <div class="col-md-2">
+                        <label for="godownSelect" class="form-label">Select Godown ID:</label>
+                        <select class="form-select" id="godownSelect">
+                        </select>
+                    </div>
+                  </div> -->
+                
+                  <!-- section 2 -->
+                  <div class="row p-1 mt-md-4" >
+                    <div class="col-md-8 col-sm-6">
+                      <div class="row m-2 custom-center">
+                        <div class="col-md-4 row" id="godownSelectRow" style="display: none;">
+                            <!-- <label for="godownSelect" class="form-label">Select Godown ID:</label> -->
+                            <select class="form-select focus-lighter-grey" id="godownSelect"></select>
+                        </div>
+                        <div class="sales-activity col-md-12">
+                            <h2 class="fw-normal title text-center m-md-0 m-4">Sales Activity</h2>
+                        </div>
+                    </div>
+                    
+                      <div class="row p-2" id="saleCards">
+                        <div class="col sales-col" id="card1">
+                          <div class="card-sales p-md-2 shadow">
+                            <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                              <h3 class="card-title" id="totalsaleorders">0</h3> 
+                              <!-- <p class="card-text fw-lighter">Qty</p> -->
+                              <p class="">TOTAL SALE ORDERS</p>
+                            </div>  
+                          </div>
+                        </div>
+
+                        <div class="col sales-col" id="card2">
+                          <div class="card-sales p-md-2 shadow ">
+                            <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                              <h3 class="card-title" id="totalitemsorderd">0</h3> 
+                              <!-- <p class="card-text fw-lighter">Qty</p> -->
+                              <p class="">TOTAL ITEMS ORDERED</p>
+                            </div>
+                          </div>
+                        </div>
+                       
+                        <div class="col sales-col" id="card3">
+                          <div class="card-sales p-md-2 shadow " >
+                            <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                              <h3 class="card-title" id="totalSaleOrdersOfDay">0</h3> 
+                              <!-- <p class="card-text fw-lighter">Pkgs</p> -->
+                              <p class="">SALE ORDERS TODAY</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col sales-col" id="card4">
+                          <div class="card-sales p-md-2 shadow " >
+                            <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+                              <h3 class="card-title" id="totalItemsOrderedDay">0</h3> 
+                              <!-- <p class="card-text fw-lighter">Qty</p> -->
+                              <p class="">ITEMS ORDERD TODAY</p>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    
+                    <div class="col d-flex flex-column justify-content-center">
+                      <h4 class="fw-normal m-2 title text-center " >Inventory Summary</h4>
+                      <div class="inventory-card-container d-grid gap-between-2-and-3 p-md-2 mt-md-0 mt-3">
+                        <div class="card shadow  ">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-8 d-flex justify-content-center align-items-center  ">
+                                <p class="fw-light mb-0">Godown Capacity</p>
+                              </div>
+                              <div class="col d-flex justify-content-center align-items-center">
+                                <p class="card-text text-center mb-0 " id="totalCapacity">0</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="card shadow ">
+                          <div class="card-body ">
+                            <div class="row ">
+                              <div class="col-8 d-flex align-items-center justify-content-center ">
+                                <p class="fw-light mb-0" >Available Capacity</p>
+                              </div>
+                              <div class="col d-flex align-items-center justify-content-center">
+                                <p class="card-text text-center mb-0" id="availableCapacity">0</p>
+                              </div>
+                            </div> 
+                          </div>
+                        </div>
+                        <div class="card shadow ">
+                          <div class="card-body ">
+                            <div class="row ">
+                              <div class="col-8 d-flex align-items-center justify-content-center ">
+                                <p class="fw-light mb-0" >Total Product Quantity</p>
+                              </div>
+                              <div class="col d-flex align-items-center justify-content-center">
+                                <p class="card-text text-center mb-0" id="totalQuantitySum">0</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                       
+                      
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Section 3 -->
+                  <div class="row p-2 mt-2 custom-center">
+                    <div class="col-md-4 custom-center">
+                        <div class="card p-2 shadow  margin-bottom" >
+                            <div class= "  card-title m-2 fw-normal"><h4 class="text-center product-card-title">PRODUCT DETAILS</h4><hr class="mb-0 text-secondary"></div>
+                            <div class="card-body card-body-font  margin-bottom">
+                                <div class="row text-danger margin-bottom">
+                                    <div class="col-6 text-start fw-light" >Low Stock Items</div>
+                                    <div class="col text-end" id="LowStock">No Items</div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-6 text-start text-dark fw-light" >All Items</div>
+                                    <div class="col text-end" id="allItems">No Items</div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-6 text-start text-dark fw-light">Purchase Orders</div>
+                                    <div class="col text-end" id="purchaseOrders">No Purchases</div>
+                                </div>
+                                <div class="row margin-bottom">
+                                    <div class="col-6 text-start text-dark fw-light">Sale Orders</div>
+                                    <div class="col text-end" id="saleOrders">No Sales</div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    <div class="col margin-top  custom-center top-selling">
+                      <card class="card-group shadow custom-center ">
+                        <div class="card p-md-2 p-0  custom-center">
+                          <div class="card-title m-2 mb-0 fw-normal"><h4 class="text-center top-selling-card-title">TOP SELLING ITEMS</h4><hr class="mb-0 text-secondary"></div>
+                          <div class="card-body custom-center">
+                            <div id="topsellingitems" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 d-flex align-items-center justify-content-center">
+                              <div class="col card-top-selling card  custom-center ">
+                                  <div class="card-img-top text-center custom-center" >
+                                    <img class="top-selling-img" src="https://greenmountainpower.com/wp-content/uploads/2019/11/Orange-electric-car-charging-1992x1200px.jpg">
+                                    <small class="text-muted card-body-font" style=" font-weight: normal;" id="productname1"></small> 
+                                    <small class="text-muted card-body-font" style="font-weight: normal;" id="productOrderQuantity1">None</small> 
+                                  </div>
+                                  
+                              </div>
+                              <div class="col card-top-selling card  custom-center">
+                                  <div class="card-img-top text-center custom-center" >
+                                    <img class="top-selling-img" src="https://greenmountainpower.com/wp-content/uploads/2019/11/Orange-electric-car-charging-1992x1200px.jpg">
+                                    <small class="text-muted card-body-font" style="font-weight: normal;" id="productname2"></small>
+                                    <small class="text-muted card-body-font" style="font-weight: normal;"  id="productOrderQuantity2">None</small> 
+                                  </div>
+                                  
+                              </div>
+                              <div class="col card-top-selling card  custom-center" >
+                                  <div class="card-img-top text-center custom-center" >
+                                    <img class="top-selling-img" src="https://greenmountainpower.com/wp-content/uploads/2019/11/Orange-electric-car-charging-1992x1200px.jpg">
+                                    <small class="text-muted card-body-font" style="font-weight: normal;" id="productname3"></small>
+                                    <small class="text-muted card-body-font" style="font-weight: normal;" id="productOrderQuantity3">None</small> 
+                                  </div>
+                                 
+                              </div>
+                              <div class="col card-top-selling-1  custom-center" >
+                                  <div class="card-img-top text-center custom-center" >
+                                    <img class="top-selling-img" src="https://greenmountainpower.com/wp-content/uploads/2019/11/Orange-electric-car-charging-1992x1200px.jpg">
+                                    <small class="text-muted card-body-font" style=" font-weight: normal;" id="productname4"></small>
+                                    <small class="text-muted card-body-font" style="font-weight: normal;" id="productOrderQuantity4">None</small> 
+                                  </div>
+                              </div>
+                              
+                            </div>
+  
+                          </div>
+  
+                        </div>
+                      </card>
+
+                    </div>
+                  </div>
+                    
+                  </div>
+                </div>    
+            </div>
+          </div>
+
+          <!-- Toast -->
+
+          <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body">
+                  Something went wrong. Please try again.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- config file -->
+      <script src="../config/config.js"></script> 
+      <script src="../Scripts/utils.js"></script>
+    <!--Bootstrap jquery  -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<!-- fontawesome jquery -->
+<script src="https://kit.fontawesome.com/a19a69440d.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="../Scripts/Home.js"></script>
+<script src="../Scripts/Logout.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<script>
+  function checkCookie() {
+    var cookies = document.cookie.split(';');
+    var cookieExists = false;
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf('cookie==') === 0) {
+            cookieExists = true;
+            break;
+        }
+    }
+
+    if (cookieExists && localStorage.getItem("user")!=null) {
+        var expirationDate = new Date(document.cookie.replace(/(?:(?:^|.*;\s*)cookie\s*\==\s*([^;]*).*$)|^.*$/, "$1"));
+        if (expirationDate && expirationDate < new Date()) {
+            console.log("Cookie is expired.");
+            alert("Your session has expired. Please login again.");
+            localStorage.clear();
+            window.location.href = "login.html"; 
+        } else {
+            document.getElementById('home').style.display = 'block';
+            
+        }
+    } else {
+        window.location.href = "login.html"; 
+         alert("Please login first.");
+    }
+}
+
+  window.onload = checkCookie;
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", ()=>{
+    setActivePage();
+
+});
+</script>
+</body>
+</html>

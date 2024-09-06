@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="../css/Home.css"> -->
+    <link rel="stylesheet" href="../css/Products.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="../css/Navbar.css">
+</head>
+<body id="products" class="heading-2" style="display: none;">
+    <div>
+      <nav>
+        <div class="main-nav container flex">
+            <a  onclick="reload()" class="company-logo">
+                <img src="../resources/LogoPyramid.png" alt="company logo">
+            </a>
+
+
+            <div class="nav-links flex ulm" id="nav-links" >
+                <ul class="flex " id="nav-item">
+                    <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home', 'Home.html') ">Home</li>
+                    <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products', 'Products.html')">Products</li>
+                    
+                    <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+                        Supplier</li>
+                    <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','purchase.html')">
+                        Purchase</li>
+                    <li class="hover-link nav-item" id="customer" onclick="onNavItemClick('delivery','DeliveryOrder.html')">Delivery</li>
+                    <li class="hover-link nav-item" id="profile" onclick="onNavItemClick('profile','Profile.html')">
+                        Profile</li>
+                    <li style="margin-top: 14px;"> <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <a class="nav-toggle hover-link" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+        </div>
+    </nav>
+          
+      </div>
+      <div class="container-fluid p-1">
+        <!-- section 1 -->
+        <div class="container margin-top-container">
+          <div id="products">
+            <div class="row d-flex align-items-center justify-content-center">
+              <div class="col-12">
+                <div class="cards-container flex" id="cards-container">
+                  <h2 class=" heading-1">Products</h2>
+                  <hr>
+                  <!-- Add a button -->
+                  <div id="addProductDisplaybtn" >
+                    <a class="btn btn-primary btn-sm mb-3 d-flex " data-bs-toggle="modal" data-bs-target="#addProductModal">
+                      Add Product
+                     </a>
+                  </div>
+                  
+                </div>
+
+              </div>
+
+            </div>
+            
+          <div class=" table-responsive heading-2" id="godownHead-productTable">
+              <table class="table table-striped table-bordered border" id="product-table">
+                  <thead class="table-light" >
+                    <tr>
+                      <th scope="col" class=" text-center fw-normal" name="productId" id="productId">Product ID</th>
+                      <th scope="col" class=" text-center fw-normal" name="productCode" id="productCode">Product Name</th>
+                      <th scope="col" class=" text-center fw-normal" name="productType" id="productType">Product Type (kw)</th>
+                      <th scope="col" class=" text-center fw-normal" name="productCategory" id="productCategory">Product Category</th>
+                      <th scope="col" class=" text-center fw-normal" name="productQuantity" id="productQuantity">Product Quantity</th>
+                      <th scope="col" class=" text-center fw-normal" name="productVolume" id="productVolume">Product Volume (m<sup>3</sup>)</th>
+                      <th scope="col" class=" text-center fw-normal" name="costPrice" id="costPrice">Cost Price</th>
+                      <th scope="col" class="text-center fw-normal">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody class=" text-center"  style="vertical-align: middle;">
+                    
+                  </tbody>
+              </table>
+                  
+            </div>
+
+          <div class=" table-responsive heading-2" id="admin-productTable">
+              <table class="table table-striped table-bordered border" id="product-table-1">
+                  <thead class="table-light">
+                    <tr>
+                      <th scope="col" class=" text-center fw-normal" name="productId" id="productId">Product ID</th>
+                      <th scope="col" class=" text-center fw-normal" name="productCode" id="productCode">Product Name</th>
+                      <th scope="col" class=" text-center fw-normal" name="productType" id="productType">Product Type (kw)</th>
+                      <th scope="col" class=" text-center fw-normal" name="productCategory" id="productCategory">Product Category</th>
+                      <th scope="col" class=" text-center fw-normal" name="productQuantity" id="productQuantity">Product Quantity</th>
+                      <th scope="col" class=" text-center fw-normal" name="productVolume" id="productVolume">Product Volume (m<sup>3</sup>)</th>
+                      <th scope="col" class=" text-center fw-normal" name="costPrice" id="costPrice">Cost Price</th>
+                      <th scope="col" class=" text-center fw-normal" name="godownId" id="godownId">Godown Id</th>
+                    </tr>
+                  </thead>
+                  <tbody class=" text-center"  style="vertical-align: middle;">
+                    
+                  </tbody>
+              </table>
+                  
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div>
+             
+                <!-- Modal -->
+                <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title"  id="addProductModalLabel">Add Product</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="addProduct" class="needs-validation">
+                            <div class="container">
+                                
+                                <div class="row pt-2">
+                                    <div class="col-md-3 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="productCode" placeholder="Product Name" name="productCode" required>
+                                      <label for="productcode" style="margin-left: 4%;">Product Name</label> 
+                                      <div class="invalid-feedback">
+                                        Please enter a valid product code (alphanumeric type).
+                                      </div>
+                                      <div class="valid-feedback">Looks good...</div>                      
+                                    </div>
+                                    <div class="col-md-3 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="productCategory" placeholder="Product Category" name="productCategory" required>
+                                      <label for="category" style="margin-left: 4%;">Product Category</label> 
+                                      <div class="invalid-feedback">
+                                        Please enter a valid product category (alphanumeric type).
+                                      </div> 
+                                      <div class="valid-feedback">Looks good...</div>                            
+                                    </div>
+                                    <div class="col-md-3 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="productQuantity" placeholder="Product Quantity" name="productQuantity" required>
+                                      <label for="quantity" style="margin-left: 4%;">Product Quantity</label> 
+                                      <div class="invalid-feedback">
+                                        Please enter a valid product quantity.
+                                      </div>     
+                                      <div class="valid-feedback">Looks good...</div>                      
+                                    </div>
+                                    <div class="col-md-3 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="productVolume" placeholder="Product Volume" name="productVolume" required>
+                                      <label for="volume" style="margin-left: 4%;">Product Volume (m<sup>3</sup>)</label>    
+                                      <div class="invalid-feedback">
+                                        Please enter a valid product volume (numeric type).
+                                      </div>   
+                                      <div class="valid-feedback">Looks good...</div>                          
+                                    </div>
+                                    <div class="col-md-3 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="costprice" placeholder="Cost Price" name="costPrice" required>
+                                      <label for="costprice" style="margin-left: 4%;">Cost Price</label>  
+                                      <div class="invalid-feedback">
+                                        Please enter a valid cost price (decimal number).
+                                      </div> 
+                                      <div class="valid-feedback">Looks good...</div>                            
+                                    </div>
+                                    <div class="col-md-9 mb-3 form-floating">
+                                      <!-- <input type="text" class="form-control" id="productType" placeholder="Product Type" name="productType"> -->
+                                      <select class="form-select" id="productTypeSelect" required>
+                                        <option selected>Select Product Type</option>
+                                        <option value="2.2">2.2 kw</option>
+                                        <option value="3.3">3.3 kw</option>
+                                        <option value="4">4 kw</option>
+                                        <option value="5">5 kw</option>
+                                        <option value="6">6 kw</option>
+                                        <option value="7">7 kw</option>
+                                        <option value="8.8">8.8 kw</option>
+                                        <option value="8.8">10 kw</option>
+                                        <option value="12">12 kw</option>
+                                        <option value="20">20 kw</option>
+                                        <option value="50">50 kw</option>
+                                      </select>
+                                      <label for="productType" style="margin-left: 1.8%;">Product Type</label>   
+                                      <div class="invalid-feedback">
+                                        Please select a valid Product Type.
+                                      </div>   
+                                      <div class="valid-feedback">Looks good...</div>                          
+                                    </div>
+
+                                    <div class="col-md-4" >
+                                        <button class="btn btn-primary" type="submit" id="addProductButton">Add Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                          
+                      </div>
+                      <!-- <div class="modal-footer"> -->
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </div>
+                <!-- editProduct Modal -->
+                <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-md">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title " style="margin-left: 3%;" id="editProductModalLabel">Edit Product</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="editProduct"  class="needs-validation">
+                            <div class="container">
+                                
+                                <div class="row pt-2">
+                                    
+                                    <div class="col-md-12 mb-3 form-floating ">
+                                      <input type="text" class="form-control" id="productQuantity" placeholder="Product Quantity" name="productQuantity" required>
+                                      <label for="quantity" style="margin-left: 3%;">Product Quantity</label> 
+                                      <div class="invalid-feedback">
+                                        Please enter a valid cost price (decimal number).
+                                      </div> 
+                                      <div class="valid-feedback">Looks good...</div>                             
+                                    </div>
+                                    <div class="col-md-12 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="productVolume" placeholder="Product Volume" name="productVolume" required>
+                                      <label for="volume" style="margin-left: 3%;">Product Volume (m<sup>3</sup>)</label>   
+                                      <div class="invalid-feedback">
+                                        Please enter a valid cost price (decimal number).
+                                      </div> 
+                                      <div class="valid-feedback">Looks good...</div>                           
+                                    </div>
+                                    <div class="col-md-12 mb-3 form-floating">
+                                      <input type="text" class="form-control" id="costprice" placeholder="Cost Price" name="costPrice" required>
+                                      <label for="costprice" style="margin-left: 3%;">Cost Price</label> 
+                                      <div class="invalid-feedback">
+                                        Please enter a valid cost price (decimal number).
+                                      </div> 
+                                      <div class="valid-feedback">Looks good...</div>                           
+                                    </div>
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <button class="btn btn-primary" type="submit" id="editProductButton">Save Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Toast -->
+
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                  <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                      <div class="toast-body">
+                        Something went wrong. Please try again.
+                      </div>
+                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+      <!-- config file -->
+      <script src="../config/config.js"></script>
+      <script src="../Scripts/utils.js"></script>
+    <!-- Bootstrap jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<!-- fontawesome jquery -->
+<script src="https://kit.fontawesome.com/a19a69440d.js" crossorigin="anonymous"></script>
+
+<!-- data table -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../Scripts/Products.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<script src="../Scripts/Logout.js"></script>
+  <script>
+    function checkCookie() {
+      var cookies = document.cookie.split(';');
+      var cookieExists = false;
+
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf('cookie==') === 0) {
+          cookieExists = true;
+          break;
+        }
+      }
+
+      if (cookieExists && localStorage.getItem("user") != null) {
+        var expirationDate = new Date(document.cookie.replace(/(?:(?:^|.*;\s*)cookie\s*\==\s*([^;]*).*$)|^.*$/, "$1"));
+        if (expirationDate && expirationDate < new Date()) {
+          console.log("Cookie is expired.");
+          alert("Your session has expired. Please login again.");
+          localStorage.clear();
+          window.location.href = "login.html";
+        } else {
+          document.getElementById('products').style.display = 'block';
+
+        }
+      } else {
+        window.location.href = "login.html";
+        alert("Please login first.");
+      }
+    }
+
+    window.onload = checkCookie;
+  </script>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+      0
+      addProduct();
+      editProduct();
+      setActivePage();
+    });
+  </script>
+
+</body>
+
+</html>

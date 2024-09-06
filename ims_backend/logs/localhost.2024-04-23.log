@@ -1,0 +1,2 @@
+23-Apr-2024 11:10:03.778 INFO [main] org.apache.catalina.core.ApplicationContext.log 2 Spring WebApplicationInitializers detected on classpath
+23-Apr-2024 11:10:05.896 INFO [main] org.apache.catalina.core.ApplicationContext.log Initializing Spring embedded WebApplicationContext

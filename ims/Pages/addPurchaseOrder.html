@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase</title>
+    <link rel="stylesheet" href="../css/styleAddPurchaseOrder.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body id="addpurchaseorderbody" style="display: none;">
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" onclick="reload()" class="company-logo">
+                <img src="../resources/LogoPyramid.png" alt="company logo">
+            </a>
+
+
+            <div class="nav-links flex ulm" id="nav-links">
+                <ul class="flex " id="nav-item">
+                    <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home','Home.html')">Home</li>
+                    <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products','Products.html')">Products</li>
+                    <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+                        Supplier</li>
+                    <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','purchase.html')">
+                        Purchase</li>
+                    <li class="hover-link nav-item" id="customer" onclick="onNavItemClick('delivery','DeliveryOrder.html')">Delivery</li>
+                    <li class="hover-link nav-item" id="profile" onclick="onNavItemClick('profile','Profile.html')">
+                        Profile</li>
+                        <li style="margin-top: 14px;"> <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <a class="nav-toggle hover-link" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+
+
+
+        </div>
+    </nav>
+    
+    <main>
+        <div class="cards-container container flex">
+
+
+
+
+            <div class="formcard ">
+                <h2>Place Order</h2>
+                <hr>
+                
+                <form id="productForm" style="display: flex; flex-direction: column;  align-items: center;" action="#">
+
+                    <!-- Add hidden form field to handle the update -->
+
+                    <input type="hidden">
+                    <input type="text" class="form-control mb-4  " placeholder="Godown Id" value="Godown Id : 1"
+                        readonly style="pointer-events: none; background-color: rgb(245,245,245);">
+
+                    <!-- Supplier name dropdown -->
+                    <select class="form-control mb-4" name="supplierName">
+                        <option value="">Select Supplier</option>
+                    </select>
+
+                    <input type="text" class="form-control mb-4  " placeholder="Product Name">
+
+                    <input type="text" class="form-control mb-4  " placeholder="Product Volume">
+
+                    <input type="text" class="form-control mb-4  " placeholder="Price">
+
+                    <input type="text" class="form-control mb-4  " placeholder="Quantity">
+
+                    <input type="text" class="form-control mb-4  " placeholder="Product Category" pattern="[A-Za-z0-9\s]+" title="Please enter alphanumeric characters only">
+
+                    <select class="form-select" name="productTypeSelect" required>
+                        <option selected>Select Product Type</option>
+                        <option value="2.2">2.2 kw</option>
+                        <option value="3.3">3.3 kw</option>
+                        <option value="4">4 kw</option>
+                        <option value="5">5 kw</option>
+                        <option value="6">6 kw</option>
+                        <option value="7">7 kw</option>
+                        <option value="8.8">8.8 kw</option>
+                        <option value="12">12 kw</option>
+                        <option value="20">20 kw</option>
+                        <option value="50">50 kw</option>
+                      </select>
+
+
+
+                    <button type="submit"
+                        class="btn btn-primary text-center">Add To Cart</button>
+                </form>
+
+                
+
+
+                <hr>
+                <a href="purchase.html">Back to Purchase</a>
+
+            </div>
+
+            <div id="stack" class="stack-container">
+                <div class="stack-name">
+                    <h2>Cart</h2>
+                </div>
+
+                <div class="cart-header">
+                    <span class="product-name-header">Product Name</span>
+                    <span class="quantity-header">Quantity</span>
+                </div>
+                <button id="placeOrderButton" class="btn btn-info1 col mt-4" onclick="placeOrder()">Place Order</button>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Toast -->
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="d-flex">
+                <div class="toast-body">
+                  Something went wrong. Please try again.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+            </div>
+          </div>
+
+    </main>
+
+</body>
+<!-- Config -->
+<script src="../config/config.js"></script>
+<script src="../Scripts/utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/5cbfac4b1e.js" crossorigin="anonymous"></script>
+<script src="../Scripts/scriptAddPurchaseOrder.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../Scripts/Logout.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<script>document.addEventListener("DOMContentLoaded", () => {
+    setActivePage();
+})</script>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer</title>
+    <link rel="stylesheet" href="../css/addFormCss.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"
+    />
+  </head>
+
+  <body>
+    <nav>
+      <div class="main-nav container flex">
+        <a href="#" onclick="reload()" class="company-logo">
+          <img src="../resources/LogoPyramid.png" alt="company logo" />
+        </a>
+
+      <div class="nav-links flex ulm" id="nav-links">
+        <ul class="flex" id="nav-item">
+          <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home','Home.html')">
+            Home
+          </li>
+          <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products','Products.html')">
+            Products
+          </li>
+          <!-- <li
+              class="hover-link nav-item"
+              id="addcustomer"
+              onclick="onNavItemClick('addcustomer','Customer.html')"
+            >
+              Customer
+            </li> -->
+          <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+            Supplier
+          </li>
+          <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','Purchase.html')">
+            Purchase
+          </li>
+          <li class="hover-link nav-item" id="delivery" onclick="onNavItemClick('delivery','DeliveryOrder.html')">
+            Delivery</li>
+          <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('profile','Profile.html')">
+            Profile
+          </li>
+          <li style="margin-top: 14px">
+            <a id="logout-btn-1" class="btn-primary1">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <a class="nav-toggle hover-link" href="#" id="nav-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </a>
+    </div>
+  </nav>
+  <main>
+    <div class="cards-container container flex">
+      <div class="formcard" id="formCa">
+        <h2>Add Customer</h2>
+        <hr>
+        <form id="productForm" style="display: flex; flex-direction: column;  align-items: center;" action="#">
+
+
+
+          <input type="text" id="name" class="form-control mb-4" placeholder="Name" pattern="[A-Za-z ]+"
+            title="Name should contain only alphabets and spaces" required />
+
+
+          <input type="text" id="address" class="form-control mb-4" placeholder="Address" required />
+
+
+          <input type="text" id="contactNo" class="form-control mb-4" placeholder="ContactNo" pattern="[0-9]{10}"
+            title="Contact No should contain 10 digits" required />
+
+          <button class="btn btn-primary text-center" type="submit" id="button1">
+            Add
+          </button>
+        </form>
+        <hr>
+        <a href="Customer.html">Back to Customer</a>
+      </div>
+    </div>
+
+    <!-- Toast -->
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            Something went wrong. Please try again.
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
+    
+    
+  </main>
+  <!-- Config -->
+<script src="../config/config.js"></script>
+<script src="../Scripts/utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/5cbfac4b1e.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/Scripts/addFormJs.js"></script>
+  <script src="../Scripts/Logout.js"></script>
+  <script src="../Scripts/navbar.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      setActivePage();
+    });
+  </script>
+</body>
+
+</html>

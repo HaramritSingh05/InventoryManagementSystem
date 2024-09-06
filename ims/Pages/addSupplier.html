@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier</title>
+    <link rel="stylesheet" href="../css/styleAddSupplier.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<body id="addsupplierbody" style="display: none;">
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" onclick="reload()" class="company-logo">
+                <img src="../resources/LogoPyramid.png" alt="company logo">
+            </a>
+
+            <div class="nav-links flex ulm" id="nav-links">
+                <ul class="flex " id="nav-item">
+                    <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home','Home.html')">Home</li>
+                    <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products','Products.html')">Products</li>
+                    <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+                        Supplier</li>
+                    <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','purchase.html')">
+                        Purchase</li>
+                    <li class="hover-link nav-item" id="delivery" onclick="onNavItemClick('delivery','DeliveryOrder.html')">Delivery</li>
+                    <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('profile','Profile.html')">
+                        Profile</li>
+                        <li style="margin-top: 14px;"> <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <a class="nav-toggle hover-link" href="#" id="nav-toggle">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+
+
+
+        </div>
+    </nav>
+    <main>
+        <div class="cards-container container flex">
+
+
+
+
+            <div class="formcard">
+                <h2>Add Supplier</h2>
+                <hr>
+
+                <form style="display: flex; flex-direction: column;  align-items: center;"
+                    onsubmit="handleFormSubmit(event)">
+
+                    <!-- Add hidden form field to handle the update -->
+
+                    <!-- <input type="hidden"> -->
+                    <input type="text" class="form-control mb-4  " name="name" placeholder="Name" pattern="[A-Za-z\s]+" title="Please enter alphabetic characters only" required>
+
+                    <input type="text" class="form-control mb-4  " name="address" placeholder="Address" pattern="[A-Za-z0-9\s,-]+" title="Please enter alphanumeric characters only" required>
+
+                    <input type="text" class="form-control mb-4  " name="contact" placeholder="Contact Number" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" required>
+
+                    <button type="submit"
+                        class="btn btn-primary text-center">Add</button>
+                </form>
+
+                <hr>
+                <a href="supplier.html">Back to Suppliers</a>
+
+            </div>
+
+            <!-- Toast -->
+
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">
+                    Something went wrong. Please try again.
+                  </div>
+                  <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+              </div>
+            </div>
+
+
+
+        </div>
+
+        <!-- Toast -->
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                Something went wrong. Please try again.
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast -->
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                Something went wrong. Please try again.
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+          </div>
+        </div>
+    </main>
+
+
+</body>
+<!-- Config -->
+<script src="../config/config.js"></script>
+<script src="../Scripts/utils.js"></script>
+<script src="https://kit.fontawesome.com/5cbfac4b1e.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<script src="../Scripts/addsupplier.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../Scripts/Logout.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<script>
+    function checkCookie() {
+    var cookies = document.cookie.split(";");
+    var cookieExists = false;
+
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.indexOf("cookie==") === 0) {
+        cookieExists = true;
+        break;
+      }
+    }
+
+    if (cookieExists && localStorage.getItem("user") != null) {
+      var expirationDate = new Date(
+        document.cookie.replace(
+          /(?:(?:^|.;\s)cookie\s*\==\s*([^;]).$)|^.*$/,
+          "$1"
+        )
+      );
+      if (expirationDate && expirationDate < new Date()) {
+        console.log("Cookie is expired.");
+        alert("Your session has expired. Please login again.");
+        localStorage.clear();
+        window.location.href = "login.html";
+      } else {
+        document.getElementById("addsupplierbody").style.display = "block";
+      }
+    } else {
+      window.location.href = "login.html";
+      alert("Please login first.");
+    }
+  }
+
+  
+
+window.onload = ()=>{
+    checkCookie()
+    
+};
+</script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    setActivePage();
+})</script>
+
+</html>

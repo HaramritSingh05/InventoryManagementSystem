@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     // const toggleButton = document.getElementById('nav-toggle');
+        //     // const navLinks = document.getElementById('nav-links');
+
+        //     // toggleButton.addEventListener('click', function () {
+        //     //     navLinks.classList.toggle('active');
+        //     // });
+        // });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deliveryOrder</title>
+    <link rel="stylesheet" href="../css/DeliveryOrder.css">
+    <style>
+        body {
+
+            color: #484b51;
+        }
+
+        .bill-section {
+            margin-top: 5rem;
+            width: 60%;
+            margin-left: 20%;
+        }
+
+        .text-secondary-d1 {
+            color: #728299 !important;
+        }
+
+        .page-header {
+            margin: 0 0 1rem;
+            padding-bottom: 1rem;
+            padding-top: .5rem;
+            border-bottom: 1px dotted #e2e2e2;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .page-title {
+            padding: 0;
+            margin: 0;
+            font-size: 1.75rem;
+            font-weight: 300;
+        }
+
+        .brc-default-l1 {
+            border-color: #dce9f0 !important;
+        }
+
+        .ml-n1,
+        .mx-n1 {
+            margin-left: -.25rem !important;
+        }
+
+        .mr-n1,
+        .mx-n1 {
+            margin-right: -.25rem !important;
+        }
+
+        .mb-4,
+        .my-4 {
+            margin-bottom: 1.5rem !important;
+        }
+
+        hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, .1);
+        }
+
+        .text-grey-m2 {
+            color: #888a8d !important;
+        }
+
+        .text-success-m2 {
+            color: #86bd68 !important;
+        }
+
+        .font-bolder,
+        .text-600 {
+            font-weight: 600 !important;
+        }
+
+        .text-110 {
+            font-size: 110% !important;
+        }
+
+        .text-blue {
+            color: #478fcc !important;
+        }
+
+        .pb-25,
+        .py-25 {
+            padding-bottom: .75rem !important;
+        }
+
+        .pt-25,
+        .py-25 {
+            padding-top: .75rem !important;
+        }
+
+        .bgc-default-tp1 {
+            background-color: rgba(121, 169, 197, .92) !important;
+        }
+
+        .bgc-default-l4,
+        .bgc-h-default-l4:hover {
+            background-color: #f3f8fa !important;
+        }
+
+        .page-header .page-tools {
+            -ms-flex-item-align: end;
+            align-self: flex-end;
+        }
+
+        .btn-light {
+            color: #757984;
+            background-color: #f5f6f9;
+            border-color: #dddfe4;
+        }
+
+        .w-2 {
+            width: 1rem;
+        }
+
+        .text-120 {
+            font-size: 120% !important;
+        }
+
+        .text-primary-m1 {
+            color: #4087d4 !important;
+        }
+
+        .text-danger-m1 {
+            color: #dd4949 !important;
+        }
+
+        .text-blue-m2 {
+            color: #68a3d5 !important;
+        }
+
+        .text-150 {
+            font-size: 150% !important;
+        }
+
+        .text-60 {
+            font-size: 60% !important;
+        }
+
+        .text-grey-m1 {
+            color: #7b7d81 !important;
+        }
+
+        .align-bottom {
+            vertical-align: bottom !important;
+        }
+
+        .bill-section-margin {
+            border: 1px solid black;
+            padding: 2rem;
+        }
+    </style>
+</head>
+
+<body id="billbody" style="display: none;">
+
+    <nav>
+        <div class="main-nav container flex">
+            <a href="#" onclick="reload()" class="company-logo">
+                <img src="../resources/LogoPyramid.png" alt="company logo">
+            </a>
+
+
+            <div class="nav-links flex ulm" id="nav-links">
+                <ul class="flex " id="nav-item">
+                    <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home','Home.html')">Home</li>
+                    <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products','Products.html')">
+                        Products</li>
+                    <!-- <li class="hover-link nav-item" id="customer" onclick="onNavItemClick('customer','Customer.html')">
+                        Customer</li> -->
+                    <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+                        Supplier</li>
+                    <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','purchase.html')">
+                        Purchase</li>
+                    <li class="hover-link nav-item" id="deliveryorder"
+                        onclick="onNavItemClick('deliveryOrder','DeliveryOrder.html')">
+                        Delivery</li>
+                    <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('profile','Profile.html')">
+                        Profile</li>
+                    <li > <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+            <a class="nav-toggle hover-link" href="#" id="nav-toggle">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 34px;">
+        <div class="page-tools d-flex justify-content-center">
+            <div class="action-buttons">
+
+                <button class="btn bg-white btn-light mx-1px text-95" id="downloadPdf">
+                    <i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
+                    Export
+                </button>
+            </div>
+        </div>
+
+
+        <div class="bill-section bill-section-margin">
+            <div class="page-content container">
+                <!-- <div class="page-header text-blue-d2">
+                    <h1 class="page-title text-secondary-d1">
+                        Invoice
+                        <small class="page-info">
+                            <i class="fa fa-angle-double-right text-80"></i>
+                            ID: <span id="invoiceId"></span>
+                        </small>
+                    </h1>
+
+                    <div class="page-tools">
+                        <div class="action-buttons">
+
+                            <button class="btn bg-white btn-light mx-1px text-95" id="downloadPdf">
+                                <i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="container px-0" id="getInvoice">
+                    <div class="row mt-4">
+                        <div class="col-12 col-lg-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="text-center">
+                                        <img src="../resources/LogoPyramid.png" alt="company logo"
+                                            style="height: 100px;padding-top: 0%;">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- .row -->
+
+                            <hr class="row brc-default-l1 mx-n1 mb-4" />
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div>
+                                        <span class="text-sm text-grey-m2 align-middle">To:</span>
+                                        <span
+                                            class="text-600 text-110 text-blue align-middle customer-name">ANIKET</span>
+                                    </div>
+                                    <div class="text-grey-m2">
+                                        <div class="my-1 customer-address">
+                                            Chandigarh,INDIA
+                                        </div>
+
+                                        <div class="my-1"><i class="fa fa-phone fa-flip-horizontal text-secondary"></i>
+                                            <b class="text-600  phone-number">111-111-111</b>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+
+                                <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
+                                    <hr class="d-sm-none" />
+                                    <div class="text-grey-m2">
+                                        <!-- <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
+                                            Invoice
+                                        </div> -->
+
+                                        <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span
+                                                class="text-600 text-90">Invoice:</span> <span id="invoiceId"></span>
+                                        </div>
+
+                                        <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span
+                                                class="text-600 text-90">Issue Date:</span> <span
+                                                class="invoice-date"></span></div>
+
+                                 
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                            </div>
+
+                            <div class="mt-4">
+                                <div class="row text-600 text-white bgc-default-tp1 py-25">
+                                    <div class="d-none d-sm-block col-1">#</div>
+                                    <div class="col-9 col-sm-5">Description</div>
+                                    <div class="d-none d-sm-block col-4 col-sm-2">Qty</div>
+                                    <div class="d-none d-sm-block col-sm-2">Unit Price</div>
+                                    <div class="col-2">Amount</div>
+                                </div>
+                                <!-- Entring productDTO -->
+                                <div class="text-95 text-secondary-d3" id="invoice">
+
+
+                                </div>
+
+                                <div class="row border-b-2 brc-default-l2"></div>
+
+
+                                <div class="row mt-3">
+                                    <div class="col-12 col-sm-7 text-grey-d2 text-95 mt-2 mt-lg-0">
+                                        Payment information
+                                    </div>
+
+                                    <div class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last">
+                                        <div class="row my-2">
+                                            <div class="col-7 text-right">
+                                                SubTotal
+                                            </div>
+                                            <div class="col-5">
+                                                <span class="text-120 text-secondary-d1 sub-total">SUB TOTAL</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row my-2">
+                                            <div class="col-7 text-right">
+                                                GST (18%)
+                                            </div>
+                                            <div class="col-5">
+                                                <span class="text-110 text-secondary-d1 tax">TAX</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="row my-2">
+                                            <div class="col-7 text-right">
+                                                Total Amount
+                                            </div>
+                                            <div class="col-5">
+                                                <span class="text-110 text-success-d3 opacity-4 total-amount">TOTAL
+                                                    AMOUNT</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+
+                                <div>
+                                    <span class="text-secondary-d1 text-105">Thank you</span>
+
+
+                                    <div class="my-2"><i class="  text-xs mr-1"></i> <span
+                                            class="text-600 text-90">Godown Head :&nbsp;</span><span class="godown-head">
+                                            Godown head name</span> </div>
+                                            <div class="my-2"><i class="  text-xs mr-1"></i> <span
+                                                class="text-600 text-90">Place 0f Supply :&nbsp;</span><span class="godown-address">
+                                                    godown-address</span> </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="page-tools d-flex justify-content-center mt-4 mb-4">
+            <div class="action-buttons">
+
+                <button class="btn bg-white btn-light mx-1px text-95" id="downloadPdf">
+                    <i class="mr-1 fa fa-file-pdf-o text-danger-m1 text-120 w-2"></i>
+                    Export
+                </button>
+            </div>
+        </div> -->
+  
+        <!-- Config -->
+        <script src="../config/config.js"></script>
+        <script src="../Scripts/utils.js"></script>
+        <script>
+            const baseURL = SERVER_URL;
+
+            const godownId = parseInt(JSON.parse(localStorage.getItem('user')).godownId);
+const cookie = extractCookie();
+var role = JSON.parse(localStorage.getItem('user')).role; // Get the role from the local storage
+            // Function to extract order ID from URL parameters
+            function getOrderIdFromUrl() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('orderId');
+            }
+
+            // Function to fetch order details from the API
+            function fetchOrderDetails(orderId) {
+                fetch(`${baseURL}/api/generateBill/${orderId}`, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        'Authorization': `Bearer ${cookie}`,
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update invoice ID in the page
+                        document.getElementById('invoiceId').innerText = `${data.invoiceNo}`;
+                        // Update the rest of the bill details using the fetched data
+                        updateBillDetails(data);
+                    })
+                    .catch(error => console.error('Error fetching order details:', error));
+            }
+
+            // Function to update bill details based on fetched order data
+            function updateBillDetails(orderData) {
+                console.log(JSON.stringify(orderData));
+                // Update customer details
+                document.querySelector('.customer-name').textContent = orderData.customerName;
+                document.querySelector('.sub-total').textContent = `₹${orderData.totalSellPrice}`;
+                document.querySelector('.tax').textContent = `₹${orderData.totalSellPrice * 0.18}`;
+                document.querySelector('.total-amount').textContent = `₹${orderData.totalSellPrice + (orderData.totalSellPrice * 0.18)}`;
+                document.querySelector('.customer-address').textContent = orderData.customerAddress;
+                document.querySelector('.phone-number').textContent = orderData.customerContactNo;
+                // document.querySelector('.invoiceId').textContent = orderData.invoiceNo;
+                document.querySelector('.invoice-date').textContent = orderData.orderDate.slice(0, 10);
+                document.querySelector('.godown-head').textContent = orderData.godownHeadName;
+                document.querySelector('.godown-address').textContent = orderData.godownAddress;
+
+                // Update product details
+                const productsContainer = document.getElementById('invoice');
+                orderData.productDTOList.forEach((product, index) => {
+                    const row = document.createElement('div');
+                    row.classList.add('row', 'mb-2', 'mb-sm-0', 'py-25');
+                    row.innerHTML = `
+                <div class="d-none d-sm-block col-1">${index + 1}</div>
+                    <div class="col-9 col-sm-5">${product.productName}</div>
+                    <div class="d-none d-sm-block col-2">${product.orderQuantity}</div>
+                    <div class="d-none d-sm-block col-2 text-95">₹${product.sellPrice}</div>
+                    <div class="col-2 text-secondary-d2">₹${product.orderQuantity * product.sellPrice}</div>
+                `;
+                    productsContainer.appendChild(row);
+                });
+            }
+            // Fetch order details when the page loads
+            document.addEventListener("DOMContentLoaded", function () {
+                const orderId = getOrderIdFromUrl();
+                if (!orderId) {
+                    console.error('Order ID is missing in URL');
+                    return;
+                }
+                fetchOrderDetails(orderId);
+            });
+            function extractCookie() {
+    const cookieRow = document.cookie.split('; ').find(row => row.startsWith('cookie=='));
+    return cookieRow ? cookieRow.split('==')[1] : '';
+}
+
+        </script>
+
+        <script>
+            document
+                .getElementById("downloadPdf")
+                .addEventListener("click", function () {
+                    const invoiceElement = document.getElementById("getInvoice");
+                    const options = {
+                        margin: 0.5,
+                        filename: "invoice.pdf",
+                        image: { type: "jpeg", quality: 1 },
+
+                        html2canvas: { scale: 1, logging: true, scrollY: -window.scrollY },
+                        jsPDF: { unit: "in", format: "A4", orientation: "portrait" }
+                    };
+
+                    // Then call html2pdf with the element and options
+                    html2pdf().from(invoiceElement).set(options).save();
+                });
+
+                function checkCookie() {
+    var cookies = document.cookie.split(';');
+    var cookieExists = false;
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf('cookie==') === 0) {
+            cookieExists = true;
+            break;
+        }
+    }
+
+    if (cookieExists && localStorage.getItem("user")!=null) {
+        var expirationDate = new Date(document.cookie.replace(/(?:(?:^|.*;\s*)cookie\s*\==\s*([^;]*).*$)|^.*$/, "$1"));
+        if (expirationDate && expirationDate < new Date()) {
+            console.log("Cookie is expired.");
+            alert("Your session has expired. Please login again.");
+            localStorage.clear();
+            window.location.href = "login.html"; 
+        } else {
+            document.getElementById('billbody').style.display = 'block';
+            
+        }
+    } else {
+        window.location.href = "login.html"; 
+         alert("Please login first.");
+    }
+}
+
+  window.onload = checkCookie;
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="../Scripts/DeliveryOrder.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="../Scripts/Logout.js"></script>
+        <script src="../Scripts/navbar.js"></script>
+        <script>document.addEventListener("DOMContentLoaded", () => {
+         setActivePage();
+        })</script>
+</body>
+
+</html>

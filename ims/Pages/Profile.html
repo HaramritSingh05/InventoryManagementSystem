@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/Home.css">
+    <link rel="stylesheet" href="../css/Navbar.css">
+</head>
+<body id="profile" class="heading-2" style="display: none;">
+                <div>
+                  <nav>
+                    <div class="main-nav container flex">
+                      <a  onclick="reload()" class="company-logo">
+                          <img src="../resources/LogoPyramid.png" alt="company logo">
+                      </a>
+                      <div class="nav-links flex ulm d-flex" id="nav-links">
+                          <ul class="flex " id="nav-item">
+                              <li class="hover-link nav-item" id="home" onclick="onNavItemClick('home', 'Home.html') ">Home</li>
+                              <li class="hover-link nav-item" id="products" onclick="onNavItemClick('products', 'Products.html')">Products</li>
+                              <li class="hover-link nav-item" id="supplier" onclick="onNavItemClick('supplier','supplier.html')">
+                                  Supplier</li>
+                              <li class="hover-link nav-item" id="purchase" onclick="onNavItemClick('purchase','purchase.html')">
+                                  Purchase</li>
+                              <li class="hover-link nav-item" id="delivery" onclick="onNavItemClick('delivery','DeliveryOrder.html')">Delivery</li>
+                              <li class="hover-link nav-item" id="profile" onclick="onNavItemClick('profile','Profile.html')">
+                                  Profile</li>
+                              <li style="margin-top: 14px;"> <a id="logout-btn-1" class="btn-primary1 ">Logout</a>
+                              </li>
+                          </ul>
+                      </div>
+                      <a class="nav-toggle hover-link"id="nav-toggle">
+                          <i class="fa-solid fa-bars"></i>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+                <div class="container rounded bg-white mt-3">       
+                  <div class="p-4 mt-1">
+                      <div class="border-right">
+                          <div class="d-flex flex-column align-items-center text-center">
+                              <img class="rounded-circle" width="100px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                              <span class="font-weight-bold" id="name1">loading...</span>
+                              <span class="font-weight-bolder" id="designation1">loading...</span>
+                              <span class="text-black-50" id="email">loading...</span>
+                              
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="container bg-white rounded">
+                
+                  <div class="p-3" >
+                    <!-- row 1 -->
+                        <div style="margin: 0 auto; display: flex; justify-content: center;">
+                        
+                          <div class="row">
+                            <div class="col-md-4 mt-0">
+                              <label for="empid" class="form-label">Godown Head ID: </label>
+                              <input type="text" class="form-control" id="empid" value="loading.." disabled>
+                            </div>
+                            <div class="col-md-4 mt-0">
+                              <label for="empid" class="form-label">Godown ID: </label>
+                              <input type="text" class="form-control" id="godownId"  value="loading.." disabled>
+                            </div>
+                            <div class="col-md-4 mt-0">
+                              <label for="designation" class="form-label">Designation: </label>
+                              <input type="text" class="form-control" id="designation2" value="loading..." disabled>
+                            </div>
+                            <div class="col-md-4 mt-1">
+                              <label for="name" class="form-label">Name: </label>
+                              <input type="text" class="form-control" id="name2" value="loading..." disabled>
+                            </div>
+                            <div class="col-md-4 mt-1">
+                              <label for="mobileNo" class="form-label">Mobile no: </label>
+                              <input type="text" class="form-control" id="mobileNo" value="loading..." disabled>
+                            </div>
+                            <div class="col-md-4 mt-1">
+                              <label for="email" class="form-label">Username: </label>
+                              <input type="email" class="form-control" id="username2" value="loading..." disabled>
+                            </div>
+                            <div class="col-md-12 mt-1">
+                              <label for="address" class="form-label">Address: </label>
+                              <input type="text" class="form-control" id="address" value="loading..." disabled>
+                            </div>
+                          </div>
+                        </div> 
+                        <div class="mt-4 d-flex justify-content-center">
+                          <a class="btn btn-primary" href="../Pages/EditProfile.html">
+                            <i class="fa-solid fa-user-pen"></i> Edit Profile
+                          </a>
+                        </div>
+                        <div class="text-center mt-2">
+                          <a class="btn btn-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                            Change Password
+                          </a>
+                        </div>
+
+                <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-md">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                         <h4 class="modal-title" style="margin-left: 2%;" id="changePasswordLabel">Change Password</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form id="changePassword"  class="needs-validation">
+                            <div class="container"> 
+                                <div class="row pt-2">
+                                    
+                                    <div class="col-md-12 mb-3 form-floating ">
+                                      <input type="password" class="form-control" id="oldPassword" placeholder="Old Password" name="oldPassword" required>
+                                      <label for="oldPassword" style="margin-left: 2%;">Old Password</label>                            
+                                    </div>
+                                    <div class="col-md-12 mb-3 form-floating">
+                                      <input type="password" class="form-control" id="newPassword" placeholder="New Password" name="newPassword" required minlength="8" pattern="^(?=.*[!@#$%^&*])(?=.*[a-zA-Z])(?=.*[0-9].*[0-9]).{8,}$" title="Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, 2 numerics, and one special character">
+                                      <label for="newPassword" style="margin-left: 2%;">New Password</label>   
+                                    </div>
+                                    <div class="col-md-12 d-flex justify-content-center">
+                                        <button class="btn btn-primary" type="submit" id="savePasswordBtn">Save Password</button>
+                                    </div>
+                                </div>
+                            </div>
+                          </form>
+                          
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  </div>
+                  
+                  <!-- Toast -->
+
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                  <div id="liveToast" class="toast align-items-center text-white bg-info danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                      <div class="toast-body">
+                        Something went wrong. Please try again.
+                      </div>
+                      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
+                <!-- Config -->
+      <script src="../config/config.js"></script>
+      <script src="../Scripts/utils.js"></script>
+    <!--Bootstrap jquery  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<!-- fontawesome jquery -->
+<script src="https://kit.fontawesome.com/a19a69440d.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../Scripts/Profile.js"></script>
+<script src="../Scripts/Logout.js"></script>
+<script src="../Scripts/navbar.js"></script>
+<script>
+  function checkCookie() {
+    var cookies = document.cookie.split(';');
+    var cookieExists = false;
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.indexOf('cookie==') === 0) {
+            cookieExists = true;
+            break;
+        }
+    }
+
+    if (cookieExists && localStorage.getItem("user")!=null) {
+        var expirationDate = new Date(document.cookie.replace(/(?:(?:^|.*;\s*)cookie\s*\==\s*([^;]*).*$)|^.*$/, "$1"));
+        if (expirationDate && expirationDate < new Date()) {
+            console.log("Cookie is expired.");
+            alert("Your session has expired. Please login again.");
+            localStorage.clear();
+            window.location.href = "login.html"; 
+        } else {
+            document.getElementById('profile').style.display = 'block';
+            
+        }
+    } else {
+        window.location.href = "login.html"; 
+         alert("Please login first.");
+    }
+}
+
+  window.onload = checkCookie;
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    getUserData();
+    setActivePage();
+    updatePassword();
+});
+</script>
+
+</body>
+</html>

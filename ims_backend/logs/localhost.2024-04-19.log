@@ -1,0 +1,2 @@
+19-Apr-2024 00:05:56.691 INFO [Thread-3] org.apache.catalina.core.ApplicationContext.log Destroying Spring FrameworkServlet 'dispatcherServlet'
+19-Apr-2024 00:05:56.706 INFO [Thread-3] org.apache.catalina.core.ApplicationContext.log Closing Spring root WebApplicationContext
